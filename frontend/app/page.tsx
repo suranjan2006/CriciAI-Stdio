@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen">
@@ -43,9 +44,12 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row gap-4 mt-10">
 
-          <button className="bg-green-500 hover:bg-green-600 transition px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg shadow-green-500/20">
-            Start Creating
-          </button>
+          <Link
+  href="/dashboard"
+  className="bg-green-500 hover:bg-green-600 transition px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg shadow-green-500/20"
+>
+  Start Creating
+</Link>
 
           <button className="border border-gray-700 hover:border-gray-500 transition px-8 py-4 rounded-2xl text-lg">
             Watch Demo
