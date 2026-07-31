@@ -3,6 +3,7 @@
 import AIOutput from "../components/AIOutput";
 import { useState } from "react";
 import { motion } from "framer-motion";
+
 import {
   Sparkles,
   Hash,
@@ -13,6 +14,7 @@ import {
 import LiveMatches from "../components/LiveMatches";
 
 export default function Dashboard() {
+  
 
   const [activeTool, setActiveTool] = useState("caption");
 

@@ -3,9 +3,27 @@
 import { useState } from "react";
 import DemoModal from "./components/DemoModal";
 import Link from "next/link";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const router = useRouter();
+
+const handleGoogleLogin = async () => {
+  const provider = new GoogleAuthProvider();
+
+  try {
+    const result = await signInWithPopup(auth, provider);
+
+    console.log("Logged in:", result.user);
+
+    router.push("/dashboard");
+  } catch (error) {
+    console.error(error);
+  }
+};
   return (
     <main className="bg-black text-white min-h-screen">
 
@@ -50,12 +68,12 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row gap-4 mt-10">
 
-          <Link
-  href="/dashboard"
+         <button
+  onClick={handleGoogleLogin}
   className="bg-green-500 hover:bg-green-600 transition px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg shadow-green-500/20"
 >
   Start Creating
-</Link>
+</button>
 
           <button
   onClick={() => setIsDemoOpen(true)}
