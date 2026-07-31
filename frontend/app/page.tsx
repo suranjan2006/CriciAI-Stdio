@@ -1,5 +1,11 @@
+"use client";
+
+import { useState } from "react";
+import DemoModal from "./components/DemoModal";
 import Link from "next/link";
+
 export default function Home() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
   return (
     <main className="bg-black text-white min-h-screen">
 
@@ -51,9 +57,12 @@ export default function Home() {
   Start Creating
 </Link>
 
-          <button className="border border-gray-700 hover:border-gray-500 transition px-8 py-4 rounded-2xl text-lg">
-            Watch Demo
-          </button>
+          <button
+  onClick={() => setIsDemoOpen(true)}
+  className="border border-gray-700 hover:border-gray-500 transition px-8 py-4 rounded-2xl text-lg"
+>
+  Watch Demo
+</button>
 
         </div>
 
@@ -178,6 +187,10 @@ export default function Home() {
   </div>
 
 </section>
+<DemoModal
+  isOpen={isDemoOpen}
+  onClose={() => setIsDemoOpen(false)}
+/>
 </main>
   );
 }
