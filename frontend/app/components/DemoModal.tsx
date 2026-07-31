@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 type DemoModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -9,7 +11,7 @@ export default function DemoModal({
   isOpen,
   onClose,
 }: DemoModalProps) {
-
+const [step, setStep] = useState(1);
   if (!isOpen) return null;
 
   return (
@@ -17,13 +19,29 @@ export default function DemoModal({
 
       <div className="w-[90%] max-w-2xl rounded-3xl bg-[#111111] border border-green-500/20 p-8">
 
-        <h2 className="text-3xl font-bold text-green-400 mb-4">
-          👋 Welcome to Crici AI
-        </h2>
+        {step === 1 && (
+  <>
+    <h2 className="text-3xl font-bold text-green-400 mb-4">
+      👋 Welcome to Crici AI
+    </h2>
 
-        <p className="text-gray-300 text-lg mb-8">
-          This quick guide will show you how to use Crici AI in under a minute.
-        </p>
+    <p className="text-gray-300 text-lg mb-8">
+      This quick guide will show you how to use Crici AI in under a minute.
+    </p>
+  </>
+)}
+
+{step === 2 && (
+  <>
+    <h2 className="text-3xl font-bold text-green-400 mb-4">
+      🏏 Step 1: Choose Your Match
+    </h2>
+
+    <p className="text-gray-300 text-lg mb-8">
+      Select a live cricket match from the list, or type your own topic if you want to create content for any match or player.
+    </p>
+  </>
+)}
 
         <div className="flex justify-between">
 
@@ -35,10 +53,11 @@ export default function DemoModal({
           </button>
 
           <button
-            className="px-6 py-3 rounded-xl bg-green-500 hover:bg-green-600 font-semibold"
-          >
-            Next →
-          </button>
+  onClick={() => setStep(step + 1)}
+  className="px-6 py-3 rounded-xl bg-green-500 hover:bg-green-600 font-semibold"
+>
+  Next →
+</button>
 
         </div>
 
